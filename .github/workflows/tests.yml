@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - Dockerfile
+      - arm64-workaround/**
     tags-ignore: # Exclude the release tags since they trigger a dedicated release action.
       - 'v[0-9]+.[0-9]+'
       - 'v[0-9]+.[0-9]+-dockerupdate-[0-9]+'
