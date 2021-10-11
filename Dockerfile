@@ -27,9 +27,7 @@ RUN git clone https://github.com/languagetool-org/languagetool.git --depth 1 -b 
 
 WORKDIR /languagetool
 
-RUN ["mvn", "--projects", "languagetool-standalone", "dependency:go-offline", "--also-make"]
-
-RUN ["mvn", "-T", "2", "--projects", "languagetool-standalone", "-o", "clean", "package", "--quiet"]
+RUN ["mvn", "install", "-DskipTests"]
 
 RUN LANGUAGETOOL_DIST_VERSION=$(xmlstarlet sel -N "x=http://maven.apache.org/POM/4.0.0" -t -v "//x:project/x:properties/x:languagetool.version" pom.xml) && unzip /languagetool/languagetool-standalone/target/LanguageTool-${LANGUAGETOOL_DIST_VERSION}.zip -d /dist
 

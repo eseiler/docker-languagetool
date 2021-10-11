@@ -23,5 +23,5 @@ jobs:
     - name: Build
       run: docker build --target=build -t languagetool-build .
 
-    # - name: Run tests
-    #   run: docker run -e "MAVEN_OPTS=-Xmx1024m" languagetool-build mvn test --projects languagetool-standalone --also-make
+    - name: Run tests
+      run: docker run -e "MAVEN_OPTS=-Xmx2048m" languagetool-build mvn test --projects languagetool-standalone
